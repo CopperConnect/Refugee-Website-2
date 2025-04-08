@@ -1,0 +1,51 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+
+export default function AsylumWatchdog() {
+  const [testimony, setTestimony] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = () => {
+    // Placeholder for real submission logic
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4">Asylum Watchdog</h1>
+      <p className="text-lg mb-6">
+        Documenting human rights failures in the United States and building a path toward international asylum recognition for those abandoned by their government.
+      </p>
+
+      <Card className="mb-6">
+        <CardContent className="p-4">
+          <h2 className="text-xl font-semibold mb-2">Submit Your Testimony</h2>
+          <Textarea
+            placeholder="Tell your story..."
+            className="mb-4"
+            value={testimony}
+            onChange={(e) => setTestimony(e.target.value)}
+          />
+          <Button onClick={handleSubmit} disabled={submitted}>
+            {submitted ? "Submitted" : "Submit"}
+          </Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent className="p-4">
+          <h2 className="text-xl font-semibold mb-2">What We Stand For</h2>
+          <ul className="list-disc list-inside text-base space-y-1">
+            <li>Recognizing food, shelter, and healthcare as human rights</li>
+            <li>Exposing unsafe and inhumane conditions in U.S. shelters and programs</li>
+            <li>Helping build legal pathways to asylum in countries that honor the 1951 Refugee Convention</li>
+            <li>Giving a voice to the voiceless with a secure and accessible testimony system</li>
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
